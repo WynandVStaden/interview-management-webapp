@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>All Notes</h2>
+
+    {% if notes %}
+        <div class="notes-container">
+            {% for note in notes %}
+                <div class="note-block">
+                    <p>{{ note.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No notes available.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>{{ note.content|linebreaksbr }}</p>
+    <br/>
+    <a href="{% url 'note_edit' note_id=note.id candidate_id=candidate_id %}">Edit Note</a>
+    <br/>
+    <form method="post" action="{% url 'note_delete' note_id=note.id candidate_id=candidate_id %}" class="delete-form">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <br/>
+    <a href="{% url 'candidate_detail' pk=candidate_id %}">Back</a>
+{% endblock %}

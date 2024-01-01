@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Candidate Notes - {{ candidate.name }}</h2>
+
+    {% if candidate.notes.all %}
+        <ul>
+            {% for note in candidate.notes.all %}
+                <li>{{ note.content }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No notes available for this candidate.</p>
+    {% endif %}
+
+    <a href="{% url 'candidate_list' %}">Back to Candidate List</a>
+{% endblock %}

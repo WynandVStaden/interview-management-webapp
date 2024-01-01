@@ -1,0 +1,29 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="candidate-details">
+    <h2>{{ candidate.name }}</h2>
+    <br/>
+    {% if user.is_authenticated %}
+    <p>{{ candidate.email }}</p>
+    <p>{{ candidate.cell_phone }}</p>
+      {% if candidate.resume %}
+        <br/>
+        <p class="resume-link"><a href="{{ candidate.resume.url }}" target="_blank">{{candidate.resume}}(open me)</a></p>
+      {% endif %}
+    {% else %}
+      <p class="authentication-message">Be authenticated to view more info</p>
+    {% endif %}
+  </div>
+  <br/>
+  <ul>
+    {% for note in notes %}
+      <div class="note-block">
+        <li>  <a href="{% url 'note_detail' note_id=note.id candidate_id=candidate.id %}">{{ note.title }}</a></li>
+      </div>
+      {% endfor %}
+  </ul>
+  <a href="{% url 'note_create' candidate_id=candidate_id %}">Add Note</a>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h3><a href="{% url 'candidate_create' %}" class="add-candidate-button">.  Add Candidate  .</a></h3>
+{% endif %}
+
+<div class="candidate-search">
+    <form method="get" action="{% url 'candidate_search' %}">
+        <input type="text" name="search_query" placeholder="Search by candidate name">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+{% for candidate in candidates %}
+<div class="candidate-block">
+    <div class="candidate-info">
+        <h3>{{ candidate.name }}</h3>
+        <!-- Add more details as needed -->
+        {% if user.is_authenticated %}
+        <p>{{ candidate.email }}</p>
+        <p>{{ candidate.cell_phone }}</p>
+        {% endif %}
+    </div>
+    {% if user.is_authenticated %}
+    <div class="candidate-actions">
+        <a href="{% url 'candidate_detail' candidate.id %}" class="action-button">
+            <button type="button">View</button>
+        </a>
+        <a href="{% url 'candidate_edit' candidate.id %}" class="action-button">
+            <button type="button">Edit</button>
+        </a>
+        <!--
+        <a href="{% url 'note_list' candidate.id %}" class="action-button">
+            <button type="button">View Notes</button>
+        </a>
+        <a href="{% url 'note_create' candidate.id %}" class="action-button">
+            <button type="button">Add Note</button>
+        </a>
+        -->
+         <form method="post" action="{% url 'candidate_delete' candidate.id %}" class="delete-form">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock %}

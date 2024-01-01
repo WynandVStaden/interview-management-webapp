@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Interview Management{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        {% if user.is_authenticated %}
+        <h2>Welcome, {{ user.username }}!</h2>
+        {% else %}
+        <h2>Inteview Management System</h2>
+        {% endif %}
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'candidate_list' %}">Candidates</a></li>
+                <!-- <li><a href="{% url 'all_notes' %}">All Notes</a></li> -->
+                <!-- <li><a href="{% url 'note_list' candidate_id=1 %}">Notes</a></li> -->
+                {% if user.is_authenticated %}
+                    <a href="{% url 'user_logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'user_login' %}">Login</a>
+                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Interview Management</p>
+    </footer>
+</body>
+</html>

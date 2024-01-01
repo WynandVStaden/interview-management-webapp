@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Notes for Candidate</h2>
+  <ul>
+    {% for note in notes %}
+      <div class="note-block">
+        <li>  <a href="{% url 'note_detail' note_id=note.id %}">{{ note.title }}</a></li>
+      </div>
+      {% endfor %}
+  </ul>
+  <a href="{% url 'note_create' candidate_id=candidate_id %}">Add Note</a>
+{% endblock %}

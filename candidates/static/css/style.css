@@ -1,0 +1,227 @@
+/* THE GLOBAL CSS FILE SHARED BY ALL APPS */
+
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Navigation Styles */
+nav {
+    margin-top: 10px;
+    margin-width: 10px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    margin: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
+/* Main Content Styles */
+main {
+    padding: 30px;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+/* Additional Styles for Authenticated User Welcome */
+header p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+/* Styles for Logout Link */
+header a[href*="user_logout"] {
+    color: #e74c3c;
+}
+
+/* Styles for Login and Signup Links */
+header a[href*="user_login"],
+header a[href*="signup"] {
+    color: #2ecc71;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 15px 0;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    li {
+        margin: 10px 0;
+    }
+}
+
+/* Styles for Candidate Blocks */
+.candidate-block {
+    background-color: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between; /* Adjust as needed */
+    align-items: center; /* Adjust as needed */
+}
+
+.candidate-block h3 {
+    /*color: #3498db;*/
+    color: black;
+}
+
+.candidate-block p {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.candidate-details {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info {
+    color: #555;
+}
+
+.resume-link a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.resume-link a:hover {
+    color: #2980b9;
+}
+
+.authentication-message {
+    color: #e74c3c;
+}
+
+/* Responsive Styles for Candidate Blocks */
+@media screen and (max-width: 768px) {
+    .candidate-block {
+        padding: 10px;
+        margin-bottom: 15px;
+        flex-direction: column; /* Adjust for smaller screens */
+        align-items: stretch;
+    }
+}
+
+/* Styles for Note Blocks */
+.notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px; /* Adjust the spacing between notes */
+}
+
+.note-block {
+    background-color: #ecf0f1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+/* Responsive Styles for Note Blocks */
+@media screen and (max-width: 768px) {
+    .note-block {
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+}
+
+.candidate-actions {
+    display: flex;
+    justify-content: space-around; /* Adjust as needed */
+    align-items: center;
+    margin-top: 20px; /* Add margin for spacing */
+}
+
+.candidate-search {
+    padding: 8px;
+    margin-top: 5px; /* Add margin for spacing */
+}
+
+/* Style for the buttons */
+.action-button {
+    text-decoration: none;
+}
+
+.action-button button {
+    margin-right: 10px;
+    background-color: #3498db; /* Set button background color */
+    color: #fff; /* Set button text color */
+    border: none;
+    padding: 10px 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+.action-button button:hover {
+    background-color: #2980b9; /* Change background color on hover */
+}
+
+/* Style for the delete button */
+.delete-form button {
+    background-color: #e74c3c; /* Set delete button background color */
+}
+
+.delete-form button:hover {
+    background-color: #c0392b; /* Change delete button background color on hover */
+}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="candidate-search-results">
+    {% if search_query %}
+    <p>Search results for '{{ search_query }}':</p>
+    {% endif %}
+
+    {% if candidates %}
+    {% for candidate in candidates %}
+    <div class="candidate-block">
+        <div class="candidate-info">
+            <h3>{{ candidate.name }}</h3>
+            {% if user.is_authenticated %}
+            <p>{{ candidate.email }}</p>
+            <p>{{ candidate.cell_phone }}</p>
+            {% endif %}
+        </div>
+        {% if user.is_authenticated %}
+        <div class="candidate-actions">
+            <a href="{% url 'candidate_detail' candidate.id %}" class="action-button">
+                <button type="button">View</button>
+            </a>
+            <a href="{% url 'candidate_edit' candidate.id %}" class="action-button">
+                <button type="button">Edit</button>
+            </a>
+            <!--
+            <a href="{% url 'note_list' candidate.id %}" class="action-button">
+                <button type="button">View Notes</button>
+            </a>
+            <a href="{% url 'note_create' candidate.id %}" class="action-button">
+                <button type="button">Add Note</button>
+            </a>
+            -->
+             <form method="post" action="{% url 'candidate_delete' candidate.id %}" class="delete-form">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>No candidates found.</p>
+    {% endif %}
+</div>
+{% endblock %}
